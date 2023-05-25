@@ -21,7 +21,7 @@
                                 DataTable Example -->
                                 <!-- membuat tombol mengarahkan ke file produk_form.php -->
                                
-                                <a href="#" class="btn btn-primary btn-sm">Tambah</a>
+                                <a href="{{url('admin/pengunjung/create')}}" class="btn btn-primary btn-sm">Tambah</a>
                                 
                             </div>
                             <div class="card-body">
@@ -65,7 +65,7 @@
                                                 <form action="#" method="POST">
                                                     <a class="btn btn-info btn-sm" href="#">Detail</a>
                     
-                                                    <a class="btn btn-warning btn-sm" href="#">Ubah</a>
+                                                    <a class="btn btn-warning btn-sm" href="{{url('admin/pengunjung/edit/'.$p->id)}}">Ubah</a>
                                                     <button type="submit"  class="btn btn-danger btn-sm" name="proses" value="hapus"
                                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button>
 

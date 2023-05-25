@@ -16,7 +16,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('admin/pegawai')}}">Data Pegawai</a>
+                                    <a class="nav-link" href="{{url('admin/pengunjung')}}">Data Pengunjung</a>
                                     <a class="nav-link" href="{{url('admin/divisi')}}">Data Divisi</a>
                                     <a class="nav-link" href="">Data Staff</a>
                                     <a class="nav-link" href="index.php?url=pesanan">Data Pesanan</a>

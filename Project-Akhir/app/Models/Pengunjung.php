@@ -10,7 +10,9 @@ class Pengunjung extends Model
     use HasFactory;
     protected $table = 'pengunjung';
     protected $primaryKey =['id'];
-    protected $filelable = ['namaPengunjung'];
+    protected $filelable = [
+        'namaPengunjung', 'alamat', 'email', 'noHP'
+    ];
 
     public function pengunjung(){
         return $this->hasMany(Pengunjung::class);
