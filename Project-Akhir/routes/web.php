@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengunjungController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('admin')->group(function(){
+Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
+//ini adalah route untuk pengunjung
+Route::get('pengunjung', [PengunjungController::class, 'index']);
 });
