@@ -10,7 +10,7 @@ class Pengunjung extends Model
     use HasFactory;
     protected $table = 'pengunjung';
     protected $primaryKey =['id'];
-    protected $filelable = [
+    protected $fillable = [
         'namaPengunjung', 'alamat', 'email', 'noHP'
     ];
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,9 @@ Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
 Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
 Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
 Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
+Route::get('rating', [RatingController::class, 'index']);
+Route::get('/Rating/create', [RatingController::class, 'create']);
+Route::post('/Rating/store', [RatingController::class, 'store']);
+Route::get('/Rating/edit/{id}', [RatingController::class, 'edit']);
+Route::post('/Rating/update', [RatingController::class, 'update']);
 });
