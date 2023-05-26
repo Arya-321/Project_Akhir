@@ -34,6 +34,7 @@ class PengunjungController extends Controller
     {
         //fungsi untuk mengisi data pada form
         DB::table('pengunjung')->insert([
+            'id' => $request->id,
             'namaPengunjung' => $request->namaPengunjung,
             'email' => $request->email,
             'noHp' => $request->noHp,

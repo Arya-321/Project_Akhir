@@ -29,6 +29,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>ID</th>
                                             <th>Nama</th>
                                             <th>Alamat</th>
                                             <th>Email</th>
@@ -40,6 +41,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
+                                            <th>ID</th>
                                             <th>Nama</th>
                                             <th>Alamat</th>
                                             <th>Email</th>
@@ -56,6 +58,7 @@
                                         @foreach($pengunjung as $p)
                                         <tr>
                                             <td>{{$no}}</td>
+                                            <td>{{$p->id}}</td>
                                             <td>{{$p->namaPengunjung}}</td>
                                             <td>{{$p->alamat}}</td>
                                             <td>{{$p->email}}</td>

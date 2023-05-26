@@ -9,6 +9,13 @@
 <h1 align="center"> Form Tambah Pegawai</h1>
 <form method="POST" action="{{url('admin/pengunjung/store')}}" enctype="multipart/form-data">
     {{csrf_field()}}
+
+    <div class="form-group row">
+    <label for="text1" class="col-4 col-form-label">ID</label> 
+    <div class="col-8">
+      <input id="text1" name="id" type="text" class="form-control" placeholder="masukan id">
+    </div>
+  </div>
   <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Nama</label> 
     <div class="col-8">
@@ -25,7 +32,7 @@
   <div class="form-group row">
     <label for="text3" class="col-4 col-form-label">No HP</label> 
     <div class="col-8">
-      <input id="text3" name="tgl_lahir" type="text" class="form-control">
+      <input id="text3" name="noHP" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
