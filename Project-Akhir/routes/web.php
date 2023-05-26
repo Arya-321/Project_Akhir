@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
+use App\Http\Controller\tmpt_wisataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,12 @@ use App\Http\Controllers\PengunjungController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('admin')->group(function(){
-Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
-//ini adalah route untuk pengunjung
-Route::get('pengunjung', [PengunjungController::class, 'index']);
-Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
-Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
-Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
-Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('index');
+    //ini adalah route untuk pengunjung
+    Route::get('pengunjung', [PengunjungController::class, 'index']);
+    Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
+    Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
+    Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
+    Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
 });
