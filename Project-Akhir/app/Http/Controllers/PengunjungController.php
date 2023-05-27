@@ -37,7 +37,7 @@ class PengunjungController extends Controller
             'id' => $request->id,
             'namaPengunjung' => $request->namaPengunjung,
             'email' => $request->email,
-            'noHp' => $request->noHp,
+            'noHP' => $request->noHP,
             'alamat' => $request->alamat,
         ]);
         return redirect('admin/pengunjung');
@@ -46,9 +46,12 @@ class PengunjungController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $pengunjung = DB::table('pengunjung')->where('id', $id)->get();
+
+        return view ('admin.pengunjung.detail', compact('pengunjung'));
     }
 
     /**
@@ -84,5 +87,7 @@ class PengunjungController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('pengunjung')->where('id', $id)->delete();
+        return redirect('admin/pengujung');
     }
 }
