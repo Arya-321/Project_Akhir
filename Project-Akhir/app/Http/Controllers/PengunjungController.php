@@ -37,7 +37,7 @@ class PengunjungController extends Controller
             'id' => $request->id,
             'namaPengunjung' => $request->namaPengunjung,
             'email' => $request->email,
-            'noHP' => $request->noHP,
+            'nohp' => $request->noHP,
             'alamat' => $request->alamat,
         ]);
         return redirect('admin/pengunjung');
