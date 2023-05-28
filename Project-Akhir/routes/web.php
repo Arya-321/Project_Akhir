@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
-use App\Http\Controller\tmp_wisataController;
+use App\Http\Controller\Tmpt_wisataController;
 use App\Http\Controllers\RatingController;
 
 /*
