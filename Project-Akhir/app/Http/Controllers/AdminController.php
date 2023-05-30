@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
-
+use App\Models\Admin;
+use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     /**
@@ -12,8 +12,8 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $admin= DB::table('table_admin')->where('id', $id)->get();
-        return view('admin.admin.edit', compact('admin'));
+        $admin = DB::table('admin')->get();
+        return view('admin.admin.index', compact('admin'));
     }
 
     /**

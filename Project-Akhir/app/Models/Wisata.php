@@ -8,14 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Wisata extends Model
 {
     use HasFactory;
-    protected $table = 'tempatwisata';
-    protected $primaryKey = ['idTempatWisata'];
-    protected $fillable = [
-        'namaTempatWisata', 'deskripsi', 'gambar', 'alamat'
+    protected $table = 'wisata';
+    protected $primaryKey = 'id';
+    protected $filelable = [
+        'nama','deskripsi','alamat','foto'
     ];
-
-    public function wisata()
-    {
-        return $this->hasMany(Wisata::class);
-    }
 }

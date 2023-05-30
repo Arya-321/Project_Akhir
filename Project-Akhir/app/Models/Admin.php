@@ -9,10 +9,8 @@ class Admin extends Model
 {
     use HasFactory;
     protected $table = 'admin';
-    protected $primaryKey =['idAdmin'];
-    protected $fillable = [
-        'nama_admin', 'username', 'password'
-    ];
+    protected $primaryKey = ['id'];
+    protected $filelable = ['nama'];
 
     public function admin(){
         return $this->hasMany(Admin::class);
