@@ -33,4 +33,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/tmpt_wisata/create', [Tmpt_wisataController::class, 'create']);
     Route::post('/tmpt_wisata/store', [Tmpt_wisataController::class, 'store']);
     Route::get('/tmpt_wisata/edit/{id}', [Tmpt_wisataController::class, 'edit']);
+
+    Route::get('/admin', [AdminController::class, 'index']);
 });
