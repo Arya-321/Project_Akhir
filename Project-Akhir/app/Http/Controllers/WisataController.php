@@ -25,6 +25,7 @@ class WisataController extends Controller
     public function create()
     {
         //
+        return view('admin.wisata.create');
     }
 
     /**
@@ -33,6 +34,23 @@ class WisataController extends Controller
     public function store(Request $request)
     {
         //
+        //fungsi untuk mengisi data pada form
+        if (!empty($request->foto)) {
+            $fileName = 'gambar-' . $request->idTempatWisata . '.' . $request->foto->extension();
+            $request->foto->move(public_path('admin/image'), $fileName);
+        } else {
+            $fileName = '';
+        }
+        DB::table('tempatwisata')->insert([
+            'idTempatWisata' => $request->idTempatWisata,
+            'namaTempatWisata' => $request->namaTempatWisata,
+            'deskripsi' => $request->deskripsi,
+            'alamat' => $request->alamat,
+            'gambar' => $fileName,
+
+
+        ]);
+        return redirect('admin/wisata');
     }
 
     /**
@@ -62,8 +80,10 @@ class WisataController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        DB::table('tempatwisata')->where('idTempatWisata', $id)->delete();
+        return redirect('admin/wisata');
     }
 }

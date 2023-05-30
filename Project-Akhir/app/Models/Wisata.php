@@ -9,8 +9,8 @@ class Wisata extends Model
 {
     use HasFactory;
     protected $table = 'wisata';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'idTempatWisata';
     protected $filelable = [
-        'nama','deskripsi','alamat','foto'
+        'namaTempatWisata', 'deskripsi', 'alamat', 'gambar'
     ];
 }

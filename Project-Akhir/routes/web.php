@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('index');
 
-    Route::get('/admin', [AdminController::class, 'index' ]);
+    Route::get('/admin', [AdminController::class, 'index']);
 
     //ini adalah route untuk pengunjung
     Route::get('pengunjung', [PengunjungController::class, 'index']);
@@ -32,5 +32,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
     Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
 
-    Route::get('/wisata', [WisataController::class, 'index' ]);
+    Route::get('/wisata', [WisataController::class, 'index']);
+    Route::get('/wisata/create', [WisataController::class, 'create']);
+    Route::post('/wisata/store', [WisataController::class, 'store']);
+    Route::get('/wisata/delete/{id}', [WisataController::class, 'destroy']);
 });
