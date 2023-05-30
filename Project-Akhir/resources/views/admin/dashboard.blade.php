@@ -1,7 +1,164 @@
 @extends('admin.layout.appadmin')
 
 @section('content')
+<div id="layoutSidenav_content">
+                <main>  
+<div class="container-fluid px-4">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Data Pengunjung : 
+                                        {{$pengunjung}}
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{{url('admin/pengunjung')}}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Data Divisi : 
+                                        
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{{url('admin/divisi')}}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Data Jabatan :
+                                        
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{{url('admin/jabatan')}}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Danger Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                         <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
 
-ini adalah dashboard
+                                    <!-- paste pie -->
+                                <div class="card-header">
+                                        <i class="fas fa-chart-pie me-1"></i>
+                                        Pie Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="pieChart" width="100%" height="50"></canvas></div>
+
+                                    <!-- <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Area Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div> -->
+                                </div>
+                            </div> 
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Diagram Pengunjung
+                                    </div>
+                                    <div class="card-body"><canvas id="barChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+        
+<script>
+// Set new default font family and font color to mimic Bootstrap's default styling
+
+
+// Bar Chart Example
+// var lbl = [@foreach($ar_totals as $total) '{{$total->namaPengunjung}}',
+// @endforeach];
+
+// var ctx = document.getElementById("myBarChart");
+// var myLineChart = new Chart(ctx, 
+document.addEventListener("DOMContentLoaded",() => {
+    new Chart(document.querySelector('#barChart'),
+{
+  type: 'bar',
+  data: {
+    labels: lbl,
+    datasets: [{
+      label: "Harta Kekayaan",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: hrt,
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 300000000,
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+});
+});
+
+        </script>
+        <script>
+//             var ctx = document.getElementById("myPieChart");
+// var myPieChart = new Chart(ctx, 
+var lbl2 = [@foreach ($ar_totals as $totalPengunjung) '{{$totalPengunjung->namaPengunjung}}',
+@endforeach];
+var hrt = [@foreach($ar_totals as $totalPengunjung) {{$totalPengunjung->alamat}},
+@endforeach];
+// var ctx = document.getElementById("myBarChart");
+// var myLineChart = new Chart(ctx, 
+document.addEventListener("DOMContentLoaded", () => {
+    new Chart(document.querySelector('#pieChart'), {
+  type: 'pie',
+  data: {
+    labels: lbl2,
+    datasets: [{
+      data: jml,
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    }],
+  },
+    });
+});
+
+
+        </script>
 
 @endsection
