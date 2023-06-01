@@ -16,6 +16,7 @@ use App\Http\Controllers\PengunjungController;
 */
 
 Route::get('/', function () {
+    Alert::success('Selamat Datang');
     return view('welcome');
 });
 Route::prefix('admin')->group(function(){

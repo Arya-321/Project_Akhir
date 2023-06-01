@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class PengunjungController extends Controller
@@ -15,6 +16,7 @@ class PengunjungController extends Controller
     {
         //
         $pengunjung = DB::table('pengunjung')->get();
+       
         return view('admin.pengunjung.index',compact('pengunjung'));
     }
 
@@ -40,6 +42,7 @@ class PengunjungController extends Controller
             'nohp' => $request->noHP,
             'alamat' => $request->alamat,
         ]);
+        Alert::success('Pengunjung', 'Berhasil menambahkan data pengunjung');
         return redirect('admin/pengunjung');
     }
 
@@ -57,7 +60,7 @@ class PengunjungController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //arahakn ke file edit yang ada didivisi view
         $pengunjung = DB::table('pengunjung')->where('id', $id)->get();
@@ -77,6 +80,7 @@ class PengunjungController extends Controller
             'noHp' => $request->noHp,
             'alamat' => $request->alamat,
         ]);
+        Alert::info('Pengunjung', 'Berhasil Mengedit pengunjung');
         //ketika selesai mengupdate maka arahkan ke halaman admin divisi index
         return redirect('admin/pengunjung');
     }
@@ -84,10 +88,10 @@ class PengunjungController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( string $id)
     {
         //
         DB::table('pengunjung')->where('id', $id)->delete();
-        return redirect('admin/pengujung');
+        return redirect('admin/pengunjung');
     }
 }
