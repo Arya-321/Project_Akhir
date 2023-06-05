@@ -1,11 +1,11 @@
-@extends('admin.layout.appadmin')
+@extends('user.layout.appuser')
 
 @section('content')
 
 
 <h1 class="mt-4">Tables</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="index.html">Dashboard Admin</a></li>
+    <li class="breadcrumb-item"><a href="index.html">Dashboard Pengunjung</a></li>
     <li class="breadcrumb-item active">Tables</li>
 </ol>
 <div class="card mb-4">
@@ -21,7 +21,7 @@
                                 DataTable Example -->
         <!-- membuat tombol mengarahkan ke file produk_form.php -->
 
-        <a href="{{url('admin/pengunjung/create')}}" class="btn btn-primary btn-sm">Tambah</a>
+        <a href="{{url('user/pengunjung/create')}}" class="btn btn-primary btn-sm">Tambah</a>
 
     </div>
     <div class="card-body">
@@ -69,9 +69,9 @@
                     <td>{{$p->alamat}}</td>
                     <td>
                         <form action="#" method="POST">
-                            <a class="btn btn-info btn-sm" href="{{url('admin/pengunjung/show/'.$p->id)}}">Detail</a>
+                            <a class="btn btn-info btn-sm" href="{{url('user/pengunjung/show/'.$p->id)}}">Detail</a>
 
-                            <a class="btn btn-warning btn-sm" href="{{url('admin/pengunjung/edit/'.$p->id)}}">Ubah</a>
+                            <a class="btn btn-warning btn-sm" href="{{url('user/pengunjung/edit/'.$p->id)}}">Ubah</a>
                             <!-- <button type="submit"  class="btn btn-danger btn-sm" name="proses" value="hapus"
                                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button> -->
 
@@ -95,7 +95,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                            <a class="btn btn-danger" href="{{url('admin/pengunjung/delete/'.$p->id)}}">Hapus</a>
+                                            <a class="btn btn-danger" href="{{url('user/pengunjung/delete/'.$p->id)}}">Hapus</a>
                                         </div>
                                     </div>
                                 </div>

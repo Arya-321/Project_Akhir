@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\PengunjungController;
 
 /*
@@ -22,11 +23,20 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
 Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
 //ini adalah route untuk pengunjung
-Route::get('pengunjung', [PengunjungController::class, 'index']);
+Route::get('/pengunjung', [PengunjungController::class, 'index' ]);
 Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
 Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
 Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
 Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
 Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 Route::get('/pengunjung/delete/{id}', [PengunjungController::class, 'destroy']);
+});
+
+Route::prefix('user')->group(function(){
+    Route::get('dashboarduser',[DashboardUserController::class, 'index'])->name('index');
+
+    Route::get('/pengunjung', [PengunjungController::class, 'index' ]);
+    Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
+    Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
+    Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 });

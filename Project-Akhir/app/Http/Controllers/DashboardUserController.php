@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Pengunjung;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class DashboardController extends Controller
+use Illuminate\Http\Request;
+
+class DashboardUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //ini diarahkan ke view dashboard
-        $pengunjung = Pengunjung::count();
+        //
         $ar_wilayah = DB::table('table_pengunjung')
         ->selectRaw('jk, count(jk) as jumlah')
         ->groupBy('jk')
@@ -22,7 +20,7 @@ class DashboardController extends Controller
         ->selectRaw('nama, count(nama) as jumlah')
         ->groupBy('nama')
         ->get();
-         return view('admin.dashboard', compact('pengunjung', 'ar_wilayah', 'ar_komentar'));
+         return view('user.dashboard', compact('ar_wilayah', 'ar_komentar'));
     }
 
     /**

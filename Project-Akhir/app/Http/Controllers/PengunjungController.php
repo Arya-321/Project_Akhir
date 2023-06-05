@@ -15,9 +15,8 @@ class PengunjungController extends Controller
     public function index()
     {
         //
-        $pengunjung = DB::table('pengunjung')->get();
-       
-        return view('admin.pengunjung.index',compact('pengunjung'));
+        $pengunjung = DB::table('table_pengunjung')->get();
+        return view('admin.pengunjung.index', compact('pengunjung'));
     }
 
     /**
@@ -35,15 +34,20 @@ class PengunjungController extends Controller
     public function store(Request $request)
     {
         //fungsi untuk mengisi data pada form
-        DB::table('pengunjung')->insert([
-            'id' => $request->id,
-            'namaPengunjung' => $request->namaPengunjung,
-            'email' => $request->email,
-            'nohp' => $request->noHP,
-            'alamat' => $request->alamat,
-        ]);
-        Alert::success('Pengunjung', 'Berhasil menambahkan data pengunjung');
-        return redirect('admin/pengunjung');
+        $hashedPassword = md5($request->password);
+
+    DB::table('table_pengunjung')->insert([
+        'nama' => $request->nama,
+        'username' => $request->username,
+        'jk' => $request->jk,
+        'password' => $hashedPassword,
+        'nohp' => $request->nohp,
+        'email' => $request->email,
+        'alamat' => $request->alamat,
+        
+    ]);
+    Alert::success('Pengunjung', 'Berhasil menambahkan data pengunjung');
+    return redirect('admin/pengunjung');
     }
 
     /**
@@ -52,8 +56,7 @@ class PengunjungController extends Controller
     public function show($id)
     {
         //
-        $pengunjung = DB::table('pengunjung')->where('id', $id)->get();
-
+        $pengunjung = DB::table('table_pengunjung')->where('id', $id)->get();
         return view ('admin.pengunjung.detail', compact('pengunjung'));
     }
 
@@ -63,8 +66,7 @@ class PengunjungController extends Controller
     public function edit( $id)
     {
         //arahakn ke file edit yang ada didivisi view
-        $pengunjung = DB::table('pengunjung')->where('id', $id)->get();
-
+        $pengunjung= DB::table('table_pengunjung')->where('id', $id)->get();
         return view('admin.pengunjung.edit', compact('pengunjung'));
     }
 
@@ -74,15 +76,19 @@ class PengunjungController extends Controller
     public function update(Request $request)
     {
         //buat proses edit form
-        DB::table('pengunjung')->where('id', $request->id)->update([
-            'namaPengunjung' => $request->namaPengunjung,
-            'email' => $request->email,
-            'noHp' => $request->noHp,
-            'alamat' => $request->alamat,
-        ]);
-        Alert::info('Pengunjung', 'Berhasil Mengedit pengunjung');
-        //ketika selesai mengupdate maka arahkan ke halaman admin divisi index
-        return redirect('admin/pengunjung');
+        $hashedPassword = md5($request->password);
+
+    DB::table('table_pengunjung')->where('id', $request->id)->update([
+        'nama' => $request->nama,
+        'username' => $request->username,
+        'jk' => $request->jk,
+        'password' => $hashedPassword,
+        'nohp' => $request->nohp,
+        'email' => $request->email,
+        'alamat' => $request->alamat,
+    ]);
+    Alert::info('Pengunjung', 'Berhasil Mengedit pengunjung');
+    return redirect('admin/pengunjung');
     }
 
     /**
@@ -91,7 +97,8 @@ class PengunjungController extends Controller
     public function destroy( string $id)
     {
         //
-        DB::table('pengunjung')->where('id', $id)->delete();
+        DB::table('table_pengunjung')->where('id', $id)->delete();
+        Alert::info('Pengunjung', 'Berhasil Menghapus data pengunjung');
         return redirect('admin/pengunjung');
     }
 }

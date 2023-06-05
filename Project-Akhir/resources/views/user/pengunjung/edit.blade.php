@@ -1,4 +1,4 @@
-@extends('admin.layout.appadmin')
+@extends('user.layout.appuser')
 
 @section('content')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
     <div class="col-md-6">
       <div class="form-box">
         @foreach($pengunjung as $p)
-        <form method="POST" action="{{url('admin/pengunjung/update/')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{url('user/pengunjung/update/')}}" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
             <input type="hidden" name="id" value="{{$p->id}}" />

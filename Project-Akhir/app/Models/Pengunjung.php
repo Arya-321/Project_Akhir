@@ -8,13 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pengunjung extends Model
 {
     use HasFactory;
-    protected $table = 'pengunjung';
-    protected $primaryKey =['id'];
-    protected $filelable = [
-        'namaPengunjung', 'alamat', 'email', 'noHP'
-    ];
-
-    public function pengunjung(){
-        return $this->hasMany(Pengunjung::class);
-    }
+    protected $table ='table_pengunjung';
+    protected $primaryKey = ['id'];
+    protected $fillable = [
+        'nama', 'username','jk', 'password', 'nohp', 'email', 'alamat'
+];
 }
