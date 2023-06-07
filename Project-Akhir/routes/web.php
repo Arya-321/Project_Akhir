@@ -30,6 +30,8 @@ Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
 Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
 Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 Route::get('/pengunjung/delete/{id}', [PengunjungController::class, 'destroy']);
+Route::get('/generate-pdf', [PengunjungController::class, 'generatePDF']);
+Route::get('/pengunjung/pengunjungPDF', [PengunjungController::class, 'pengunjungPDF']);
 });
 
 Route::prefix('user')->group(function(){

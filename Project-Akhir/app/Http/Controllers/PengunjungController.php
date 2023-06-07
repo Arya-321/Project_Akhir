@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\DB;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -140,5 +141,33 @@ class PengunjungController extends Controller
         DB::table('table_pengunjung')->where('id', $id)->delete();
         Alert::info('Pengunjung', 'Berhasil Menghapus data pengunjung');
         return redirect('admin/pengunjung');
+    }
+
+    public function generatePDF()
+
+    {
+
+        $data = [
+
+            'title' => 'Welcome to ItSolutionStuff.com',
+
+            'date' => date('m/d/Y')
+
+        ];
+
+        $pdf = PDF::loadView('admin.pengunjung.myPDF', $data);
+
+    
+
+        return $pdf->download('testdownload.pdf');
+
+    }
+
+    public function pengunjungPDF(){
+        $pengunjung = DB::table('table_pengunjung')
+        ->get();
+        $pdf = PDF::loadview('admin.pengunjung.pengunjungPDF',['pengunjung'=>$pengunjung])->setPaper('a4','landscape');;
+        return $pdf->download('pengunjung.pdf');
+        
     }
 }

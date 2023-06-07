@@ -13,4 +13,10 @@ class Pengunjung extends Model
     protected $fillable = [
         'nama', 'username','jk', 'password', 'nohp', 'email', 'alamat'
 ];
+public function rating(){
+    return $this->hasMany(Rating::class); //memanggil relasi antara table divisi dengan table rating
+}
+public function ulasan(){
+    return $this->hasMany(Ulasan::class); //memanggil relasi antara table divisi dengan table ulasan
+}
 }

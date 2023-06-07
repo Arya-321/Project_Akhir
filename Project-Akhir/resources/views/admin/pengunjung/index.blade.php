@@ -22,8 +22,10 @@
         <!-- membuat tombol mengarahkan ke file produk_form.php -->
 
         <a href="{{url('admin/pengunjung/create')}}" class="btn btn-primary btn-sm">Tambah</a>
-
     </div>
+    <div class="card-header">
+                            <a href="{{url('admin/pengunjung/pengunjungPDF')}}" class="btn btn-success btn-sm" target="_blank">Eksport PDF</a>
+                            </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
