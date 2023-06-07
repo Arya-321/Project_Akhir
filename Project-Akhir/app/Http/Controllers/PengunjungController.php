@@ -33,6 +33,26 @@ class PengunjungController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|max:45',
+            'username' => 'required|max:45',
+            'jk' => 'required',
+            'password' => 'required',
+            'nohp' => 'required|integer',
+            'email' => 'required',
+            'alamat' => 'required',
+            
+        ],
+        [
+            'nama' => 'Nama wajib diisi',
+            'username' => 'Username wajib diisi',
+            'jk.required' => 'jenis_kelamin wajib diisi',
+            'password' => 'Username wajib diisi',
+            'nohp' => 'Username wajib diisi',
+            'email' => 'Username wajib diisi',
+            'alamat' => 'Username wajib diisi',
+            
+        ]);
         //fungsi untuk mengisi data pada form
         $hashedPassword = md5($request->password);
 
@@ -75,6 +95,26 @@ class PengunjungController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|max:45',
+            'username' => 'required|max:45',
+            'jk' => 'required',
+            'password' => 'required',
+            'nohp' => 'required|integer',
+            'email' => 'required',
+            'alamat' => 'required',
+            
+        ],
+        [
+            'nama' => 'Nama wajib diisi',
+            'username' => 'Username wajib diisi',
+            'jk.required' => 'jenis_kelamin wajib diisi',
+            'password' => 'Username wajib diisi',
+            'nohp' => 'Username wajib diisi',
+            'email' => 'Username wajib diisi',
+            'alamat' => 'Username wajib diisi',
+            
+        ]);
         //buat proses edit form
         $hashedPassword = md5($request->password);
 
