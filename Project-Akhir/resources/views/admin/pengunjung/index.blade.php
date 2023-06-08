@@ -25,6 +25,10 @@
     </div>
     <div class="card-header">
                             <a href="{{url('admin/pengunjung/pengunjungPDF')}}" class="btn btn-success btn-sm" target="_blank">Eksport PDF</a>
+                            <a href="{{url('admin/pengunjung/exportexcel')}}" class="btn btn-success btn-sm" > Export To EXCEL</a>
+                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal">
+                               Import To Excel
+                            </button>
                             </div>
     <div class="card-body">
         <table id="datatablesSimple">

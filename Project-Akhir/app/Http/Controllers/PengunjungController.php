@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PengunjungExport;
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -170,4 +173,18 @@ class PengunjungController extends Controller
         return $pdf->download('pengunjung.pdf');
         
     }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new PengunjungExport, 'pengunjung.xlsx');
+    }
+
+public function importExcel(Request $request)
+{
+    $file = $request->file('file');
+    $nama_file = rand() . $file->getClientOriginalName();
+    $file->move('file_excel', $nama_file);
+    Excel::import(new PengunjungImport(), public_path('/file_excel/' . $nama_file));
+    return redirect('admin/pengunjung');
+}
 }

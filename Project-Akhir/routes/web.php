@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\PengunjungExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
@@ -32,6 +33,8 @@ Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 Route::get('/pengunjung/delete/{id}', [PengunjungController::class, 'destroy']);
 Route::get('/generate-pdf', [PengunjungController::class, 'generatePDF']);
 Route::get('/pengunjung/pengunjungPDF', [PengunjungController::class, 'pengunjungPDF']);
+Route::get('/pengunjung/exportexcel/', [PengunjungController::class, 'exportExcel']);
+Route::post('/pengunjung/importexcel/', [PengunjungController::class, 'importExcel']);
 });
 
 Route::prefix('user')->group(function(){
