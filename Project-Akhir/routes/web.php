@@ -21,7 +21,9 @@ Route::get('/', function () {
     Alert::success('Selamat Datang');
     return view('welcome');
 });
-Route::prefix('admin')->group(function(){
+// Route::prefix('admin')->group(function(){
+    Route::group(['middleware' => ['auth']], function(){
+        Route::prefix('admin')->name('admin.')->group(function(){
 Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
 //ini adalah route untuk pengunjung
 Route::get('/pengunjung', [PengunjungController::class, 'index' ]);
@@ -34,8 +36,10 @@ Route::get('/pengunjung/delete/{id}', [PengunjungController::class, 'destroy']);
 Route::get('/generate-pdf', [PengunjungController::class, 'generatePDF']);
 Route::get('/pengunjung/pengunjungPDF', [PengunjungController::class, 'pengunjungPDF']);
 Route::get('/pengunjung/exportexcel/', [PengunjungController::class, 'exportExcel']);
-Route::post('/pengunjung/importexcel/', [PengunjungController::class, 'importExcel']);
+Route::post('/pengunjung/importexcel', [PengunjungController::class, 'importExcel']);
 });
+});
+
 
 Route::prefix('user')->group(function(){
     Route::get('dashboarduser',[DashboardUserController::class, 'index'])->name('index');
@@ -45,3 +49,7 @@ Route::prefix('user')->group(function(){
     Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
     Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

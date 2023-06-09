@@ -5,8 +5,9 @@ use Illuminate\Http\Request;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\DB;
 use PDF;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PengunjungExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PengunjungImport;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -174,8 +175,7 @@ class PengunjungController extends Controller
         
     }
 
-    public function exportExcel() 
-    {
+    public function exportExcel(){
         return Excel::download(new PengunjungExport, 'pengunjung.xlsx');
     }
 
