@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::get('/generate-pdf', [PengunjungController::class, 'generatePDF']);
 Route::get('/pengunjung/pengunjungPDF', [PengunjungController::class, 'pengunjungPDF']);
 Route::get('/pengunjung/exportexcel/', [PengunjungController::class, 'exportExcel']);
 Route::post('/pengunjung/importexcel', [PengunjungController::class, 'importExcel']);
+//ini adalah route untuk user
+Route::get('/user', [UserController::class, 'index']);
 });
 });
 
