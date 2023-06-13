@@ -23,10 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::prefix('admin')->group(function(){
-    Route::group(['middleware' => ['auth']], function(){
+    Route::group(['middleware' => ['auth', 'peran:admin']], function() {
         Route::prefix('admin')->name('admin.')->group(function(){
-Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
-//ini adalah route untuk pengunjung
+    Route::get('dashboard',[DashboardController::class, 'index'])->name('index');
+
 Route::get('/pengunjung', [PengunjungController::class, 'index' ]);
 Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
 Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
@@ -54,5 +54,14 @@ Route::prefix('user')->group(function(){
 });
 
 Auth::routes();
+
+Route::get('/after_register', function(){
+    return view ('after_register');
+});
+
+// Route::get('/acces_denied2', function(){
+//     return view ('admin/acces_denied2');
+// });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
