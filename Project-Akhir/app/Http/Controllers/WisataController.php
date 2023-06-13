@@ -15,7 +15,7 @@ class WisataController extends Controller
     public function index()
     {
         //
-        $wisata = DB::table('tempatwisata')->get();
+        $wisata = DB::table('table_wisata')->get();
         return view('admin.wisata.index', compact('wisata'));
     }
 
@@ -36,17 +36,17 @@ class WisataController extends Controller
         //
         //fungsi untuk mengisi data pada form
         if (!empty($request->foto)) {
-            $fileName = 'gambar-' . $request->idTempatWisata . '.' . $request->foto->extension();
+            $fileName = 'foto' . $request->id . '.' . $request->foto->extension();
             $request->foto->move(public_path('admin/image'), $fileName);
         } else {
             $fileName = '';
         }
-        DB::table('tempatwisata')->insert([
-            'idTempatWisata' => $request->idTempatWisata,
-            'namaTempatWisata' => $request->namaTempatWisata,
-            'deskripsi' => $request->deskripsi,
+        DB::table('table_wisata')->insert([
+            'id' => $request->id,
+            'nama' => $request->nama,
+            'deksripsi' => $request->deksripsi,
             'alamat' => $request->alamat,
-            'gambar' => $fileName,
+            'foto' => $fileName,
 
 
         ]);
@@ -56,25 +56,45 @@ class WisataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $wisata = DB::table('table_wisata')->where('id', $id)->get();
+
+        return view('admin.wisata.detail', compact('wisata'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
+        $wisata = DB::table('table_wisata')->where('id', $id)->get();
+
+        return view('admin.wisata.edit', compact('wisata'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
+        if (!empty($request->foto)) {
+            $fileName = 'foto' . $request->id . '.' . $request->foto->extension();
+            $request->foto->move(public_path('admin/image'), $fileName);
+        } else {
+            $fileName = '';
+        }
+        DB::table('table_wisata')->where('id', $request->id)->update([
+            'nama' => $request->nama,
+            'deksripsi' => $request->deksripsi,
+            'alamat' => $request->alamat,
+            'foto' => $fileName,
+        ]);
+        //ketika selesai mengupdate maka arahkan ke halaman admin divisi index
+        return redirect('admin/wisata');
     }
 
     /**
@@ -83,7 +103,7 @@ class WisataController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('tempatwisata')->where('idTempatWisata', $id)->delete();
+        DB::table('table_wisata')->where('id', $id)->delete();
         return redirect('admin/wisata');
     }
 }

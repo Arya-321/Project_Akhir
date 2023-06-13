@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Wisata extends Model
 {
     use HasFactory;
-    protected $table = 'wisata';
-    protected $primaryKey = 'idTempatWisata';
+    protected $table = 'table_wisata';
+    protected $primaryKey = ['id'];
     protected $filelable = [
-        'namaTempatWisata', 'deskripsi', 'alamat', 'gambar'
+        'nama', 'deksripsi', 'alamat', 'foto'
     ];
+    public function rating()
+    {
+        return $this->hasOne(Rating::class);
+    }
+    public function ulasan()
+    {
+        return $this->hasMany(Ulasan::class);
+    }
 }

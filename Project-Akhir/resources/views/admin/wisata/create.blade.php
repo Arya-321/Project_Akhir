@@ -18,25 +18,25 @@
     <div class="form-group row">
         <label for="text1" class="col-4 col-form-label">Nama</label>
         <div class="col-8">
-            <input id="text1" name="namaTempatWisata" type="text" class="form-control" placeholder="masukan nama">
+            <input id="text1" name="nama" type="text" class="form-control" placeholder="masukan nama">
         </div>
     </div>
     <div class="form-group row">
         <label for="text2" class="col-4 col-form-label">Deskripsi</label>
         <div class="col-8">
-            <input id="text2" name="deskripsi" type="text" class="form-control">
+            <input id="text2" name="deksripsi" type="text" class="form-control" placeholder="masukan deksripsi">
         </div>
     </div>
     <div class="form-group row">
         <label for="text3" class="col-4 col-form-label">Alamat</label>
         <div class="col-8">
-            <input id="text3" name="alamat" type="text" class="form-control">
+            <input id="text3" name="alamat" type="text" class="form-control" placeholder="masukan alamat">
         </div>
     </div>
     <div class="form-group row">
-        <label for="text4" class="col-4 col-form-label">Gambar</label>
+        <label for="text4" class="col-4 col-form-label">Foto</label>
         <div class="col-8">
-            <input id="text4" name="gambar" type="file" class="form-control">
+            <input id="text4" name="foto" type="file" class="form-control">
         </div>
     </div>
     <div class="form-group row">
