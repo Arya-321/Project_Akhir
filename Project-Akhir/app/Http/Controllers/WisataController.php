@@ -19,6 +19,7 @@ class WisataController extends Controller
         return view('admin.wisata.index', compact('wisata'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */

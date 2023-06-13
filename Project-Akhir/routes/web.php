@@ -6,11 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\PengunjungController;
-<<<<<<< HEAD
 use App\Http\Controllers\WisataController;
-=======
 use App\Http\Controllers\UserController;
->>>>>>> denis
 
 /*
 |--------------------------------------------------------------------------
@@ -27,27 +24,6 @@ Route::get('/', function () {
     Alert::success('Selamat Datang');
     return view('welcome');
 });
-<<<<<<< HEAD
-Route::prefix('admin')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('index');
-
-    Route::get('/admin', [AdminController::class, 'index']);
-
-    //ini adalah route untuk pengunjung
-    Route::get('pengunjung', [PengunjungController::class, 'index']);
-    Route::get('/pengunjung/create', [PengunjungController::class, 'create']);
-    Route::post('/pengunjung/store', [PengunjungController::class, 'store']);
-    Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
-    Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
-
-    Route::get('/wisata', [WisataController::class, 'index']);
-    Route::get('/wisata/create', [WisataController::class, 'create']);
-    Route::get('/wisata/edit/{id}', [WisataController::class, 'edit']);
-    Route::post('/wisata/store', [WisataController::class, 'store']);
-    Route::get('/wisata/show{id}', [WisataController::class, 'show']);
-    Route::post('/wisata/update', [WisataController::class, 'update']);
-    Route::get('/wisata/delete/{id}', [WisataController::class, 'destroy']);
-=======
 // Route::prefix('admin')->group(function(){
     Route::group(['middleware' => ['auth']], function(){
         Route::prefix('admin')->name('admin.')->group(function(){
@@ -64,9 +40,10 @@ Route::get('/generate-pdf', [PengunjungController::class, 'generatePDF']);
 Route::get('/pengunjung/pengunjungPDF', [PengunjungController::class, 'pengunjungPDF']);
 Route::get('/pengunjung/exportexcel/', [PengunjungController::class, 'exportExcel']);
 Route::post('/pengunjung/importexcel', [PengunjungController::class, 'importExcel']);
+
+Route::get('/wisata', [WisataController::class, 'index' ]);
 //ini adalah route untuk user
 Route::get('/user', [UserController::class, 'index']);
->>>>>>> denis
 });
 });
 
@@ -78,6 +55,8 @@ Route::prefix('user')->group(function(){
     Route::get('/pengunjung/edit/{id}', [PengunjungController::class, 'edit']);
     Route::post('/pengunjung/update', [PengunjungController::class, 'update']);
     Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
+
+   
 });
 
 Auth::routes();
