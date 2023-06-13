@@ -4,6 +4,7 @@
 <div id="layoutSidenav_content">
     <main>
     <div class="container-fluid px-4">
+    @include('sweetalert::alert')
     @yield('content')
     <!-- yield ini adalah mendeklarasikan yang akan diisi konten ketika yieldnya dipanggil
     didalam konten masing-masing, contoh yield yang diatas menggunakan value content -->

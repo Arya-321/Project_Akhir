@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengunjung;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     /**
@@ -12,7 +13,16 @@ class DashboardController extends Controller
     public function index()
     {
         //ini diarahkan ke view dashboard
-        return view('admin.dashboard');
+        $pengunjung = Pengunjung::count();
+        $ar_wilayah = DB::table('table_pengunjung')
+        ->selectRaw('jk, count(jk) as jumlah')
+        ->groupBy('jk')
+        ->get();
+        $ar_komentar = DB::table('table_rating')
+        ->selectRaw('nama, count(nama) as jumlah')
+        ->groupBy('nama')
+        ->get();
+         return view('admin.dashboard', compact('pengunjung', 'ar_wilayah', 'ar_komentar'));
     }
 
     /**
