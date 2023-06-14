@@ -9,16 +9,16 @@ class Wisata extends Model
 {
     use HasFactory;
     protected $table = 'table_wisata';
-    protected $primaryKey = ['id'];
-    protected $filelable = [
-        'nama', 'deksripsi', 'alamat', 'foto'
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama','deskripsi','alamat','foto'
     ];
-    public function rating()
-    {
-        return $this->hasOne(Rating::class);
+
+    public function rating(){
+        return $this->hasMany(Rating::class);
     }
-    public function ulasan()
-    {
+
+    public function ulasan(){
         return $this->hasMany(Ulasan::class);
     }
 }

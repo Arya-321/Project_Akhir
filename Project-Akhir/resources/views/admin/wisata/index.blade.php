@@ -23,7 +23,9 @@
 
         <a href="{{url('admin/wisata/create')}}" class="btn btn-primary btn-sm">Tambah</a>
     </div>
-
+    <div class="card-header">
+                            <a href="{{url('admin/wisata/wisataPDF')}}" class="btn btn-success btn-sm" target="_blank">Eksport PDF</a>
+                            </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
@@ -40,7 +42,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Deskripsi</th>
+                    <th>Deksripsi</th>
                     <th>Alamat</th>
                     <th>Foto</th>
                     <th>Action</th>
@@ -54,17 +56,21 @@
                 @foreach($wisata as $w)
                 <tr>
                     <td>{{$no}}</td>
-                    <td>{{$w->id}}</td>
                     <td>{{$w->nama}}</td>
                     <td>{{$w->deksripsi}}</td>
                     <td>{{$w->alamat}}</td>
-                    <td>{{$w->foto}}</td>
+                    <td>
+                        @empty($w->foto)
+                        <img src="{{url('admin/image/nofoto.png')}}" width="20%">
+                        @else
+                        <img src="{{url('admin/image')}}/{{$w->foto}}" width="20%">
+                        @endempty
+                    </td>
                     <td>
                         <form action="#" method="POST">
                             <a class="btn btn-info btn-sm" href="{{url('admin/wisata/show/'.$w->id)}}">Detail</a>
 
                             <a class="btn btn-warning btn-sm" href="{{url('admin/wisata/edit/'.$w->id)}}">Ubah</a>
-
                             <!-- <button type="submit"  class="btn btn-danger btn-sm" name="proses" value="hapus"
                                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button> -->
 

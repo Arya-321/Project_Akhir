@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pengunjung extends Model
 {
     use HasFactory;
-    protected $table = 'pengunjung';
-    protected $primaryKey =['id'];
+    protected $table ='table_pengunjung';
+    protected $primaryKey = ['id'];
     protected $fillable = [
-        'namaPengunjung', 'alamat', 'email', 'noHP'
-    ];
-
-    public function pengunjung(){
-        return $this->hasMany(Pengunjung::class);
-    }
+        'nama', 'username','jk', 'password', 'nohp', 'email', 'alamat'
+];
+public function rating(){
+    return $this->hasMany(Rating::class); //memanggil relasi antara table divisi dengan table rating
+}
+public function ulasan(){
+    return $this->hasMany(Ulasan::class); //memanggil relasi antara table divisi dengan table ulasan
+}
 }

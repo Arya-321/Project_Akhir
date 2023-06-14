@@ -1,48 +1,65 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
-<h1> Details</h1>
+<style>
+  .container {
+    margin-top: 50px;
+    
+  }
+
+  .project-info-box {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 30px;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+  .project-info-box p {
+    margin-bottom: 10px;
+  }
+
+  .project-info-box b {
+    font-weight: bold;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  .center-table {
+    margin: 0 auto;
+    float: none;
+  }
+</style>
+
+<div class="container">
+  <h1 class="text-center">Details</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="project-info-box center-table">
+        @foreach ($pengunjung as $p)
+        <p><b>Nama:</b> {{$p->nama}}</p>
+        <p><b>Username:</b> {{$p->username}}</p>
+        <p><b>Jenis Kelamin:</b> {{$p->jk}}</p>
+        <p><b>Password:</b> {{$p->password}}</p>
+        <p><b>No HP:</b> {{$p->nohp}}</p>
+        <p><b>Email:</b> {{$p->email}}</p>
+        <p><b>Alamat:</b> {{$p->alamat}}</p>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</div>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-<div class="container">
-<div class="row">
-<div class="col-md-5">
-<div class="project-info-box mt-0">
-    @foreach ($pengunjung as $p)
-<h5>Data Pengunjung</h5>
-<p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
-</div>
-<input type="hidden" value="{{$p->id}}" />
-<div class="project-info-box">
-<p><b>ID:</b>{{$p->id}}</p>
-<p><b>Nama:</b> {{$p->namaPengunjung}}</p>
-<p><b>Email:</b> {{$p->email}}</p>
-<p><b>No HP:</b> {{$p->noHP}}</p>
-<p><b>Alamat:</b> {{$p->alamat}}</p>
-</div>
-<div class="project-info-box mt-0 mb-0">
-<p class="mb-0">
-<span class="fw-bold mr-10 va-middle hide-mobile">Share:</span>
-<a href="#x" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
-<a href="#x" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
-<a href="#x" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-pinterest"></i></a>
-<a href="#x" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
-</p>
-</div>
-</div>
-<div class="col-md-7">
-<img src="https://www.bootdey.com/image/400x300/FFB6C1/000000" alt="project-image" class="rounded">
-<div class="project-info-box">
-<p><b>Categories:</b> Design, Illustration</p>
-<p><b>Skills:</b> Illustrator</p>
-</div>
-</div>
-</div>
-</div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-	
+
 </script>
-@endforeach
 @endsection

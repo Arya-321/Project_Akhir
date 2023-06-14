@@ -17,10 +17,10 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{url('admin/pengunjung')}}">Data Pengunjung</a>
-                                    <a class="nav-link" href="{{url('admin/divisi')}}">Data Divisi</a>
-                                    <a class="nav-link" href="">Data Staff</a>
-                                    <a class="nav-link" href="index.php?url=pesanan">Data Pesanan</a>
-                                    <a class="nav-link" href="index.php?url=kartu">Data Kartu</a>
+                                    <a class="nav-link" href="{{url('admin/divisi')}}">Data Admin</a>
+                                    <a class="nav-link" href="{{url('admin/wisata')}}">Data Wisata</a>
+                                    <a class="nav-link" href="index.php?url=pesanan"></a>
+                                    <a class="nav-link" href="index.php?url=kartu">Data</a>
                                     <a class="nav-link" href="index.php?url=about">Tentang</a>
                                     <a class="nav-link" href="index.php?url=contact">Kontak</a>
                                 </nav>
