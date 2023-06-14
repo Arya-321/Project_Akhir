@@ -9,16 +9,16 @@
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 @foreach ($wisata as $w)
-                <h5>Data Pengunjung</h5>
-                <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
+                <h5>Detail Wisata</h5>
+                <!-- <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p> -->
             </div>
             <input type="hidden" value="{{$w->id}}" />
             <div class="project-info-box">
                 <p><b>ID:</b>{{$w->id}}</p>
                 <p><b>Nama:</b> {{$w->nama}}</p>
                 <p><b>Deksripsi:</b> {{$w->deksripsi}}</p>
-                <p><b>Alamat:</b> {{$2->alamat}}</p>
-                <p><b>Foto:</b> {{$2->foto}}</p>
+                <p><b>Alamat:</b> {{$w->alamat}}</p>
+                <p><b>Foto:</b> {{$w->foto}}</p>
             </div>
             <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">

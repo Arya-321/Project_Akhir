@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/wisata/create', [WisataController::class, 'create']);
     Route::get('/wisata/edit/{id}', [WisataController::class, 'edit']);
     Route::post('/wisata/store', [WisataController::class, 'store']);
-    Route::get('/wisata/show{id}', [WisataController::class, 'show']);
+    Route::get('/wisata/show/{id}', [WisataController::class, 'show']);
     Route::post('/wisata/update', [WisataController::class, 'update']);
     Route::get('/wisata/delete/{id}', [WisataController::class, 'destroy']);
 });
