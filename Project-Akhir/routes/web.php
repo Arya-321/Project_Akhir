@@ -70,7 +70,17 @@ Route::prefix('user')->group(function(){
     Route::get('/pengunjung/show/{id}', [PengunjungController::class, 'show']);
 <<<<<<< HEAD
 
+<<<<<<< HEAD
+    Route::get('/wisata', [WisataController::class, 'index']);
+    Route::get('/wisata/create', [WisataController::class, 'create']);
+    Route::get('/wisata/edit/{id}', [WisataController::class, 'edit']);
+    Route::post('/wisata/store', [WisataController::class, 'store']);
+    Route::get('/wisata/show/{id}', [WisataController::class, 'show']);
+    Route::post('/wisata/update', [WisataController::class, 'update']);
+    Route::get('/wisata/delete/{id}', [WisataController::class, 'destroy']);
+=======
    
+>>>>>>> f42d387724a541282ac6769713098109eaef8078
 });
 
 Auth::routes();

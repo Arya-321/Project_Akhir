@@ -20,16 +20,16 @@
                     <input id="nama" name="nama" type="text" class="form-control" value="{{$w->nama}}">
                 </div>
                 <div class="form-group">
-                    <label for="nohp">Deksripsi</label>
-                    <input id="nohp" name="deksripsi" type="text" class="form-control" value="{{$w->deksripsi}}">
+                    <label for="deksripsi">Deksripsi</label>
+                    <input id="deksripsi" name="deksripsi" type="text" class="form-control" value="{{$w->deksripsi}}">
                 </div>
                 <div class="form-group">
-                    <label for="email">Alamat</label>
-                    <input id="email" name="alamat" type="text" class="form-control" value="{{$w->alamat}}">
+                    <label for="alamat">Alamat</label>
+                    <input id="alamat" name="alamat" type="text" class="form-control" value="{{$w->alamat}}">
                 </div>
                 <div class="form-group">
-                    <label for="alamat">Foto</label>
-                    <input id="alamat" name="foto" type="text" class="form-control" value="{{$w->foto}}">
+                    <label for="foto">Foto</label>
+                    <input id="foto" name="foto" type="file" class="form-control" value="{{$w->foto}}">
                 </div>
                 <div class="form-group text-center">
                     <button name="submit" type="submit" class="btn btn-primary">Update</button>
