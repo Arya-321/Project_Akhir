@@ -4,19 +4,16 @@
 <style>
   .container {
     margin-top: 50px;
-    
   }
 
   .project-info-box {
-  display: inline-block;
-  border: 1px solid #ccc;
-  padding: 30px;
-  margin-bottom: 20px;
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
   .project-info-box p {
     margin-bottom: 10px;
