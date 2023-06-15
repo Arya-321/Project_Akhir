@@ -19,8 +19,10 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{url('admin/pengunjung')}}">Data Pengunjung</a>
                                     <a class="nav-link" href="{{url('admin/divisi')}}">Data Admin</a>
-                                    <a class="nav-link" href="{{url('admin/divisi')}}">Data Wisata</a>
+                                    <a class="nav-link" href="{{url('admin/wisata')}}">Data Wisata</a>
                                     <a class="nav-link" href="{{url('admin/user')}}">Data Pengguna</a>
+                                    <a class="nav-link" href="{{url('admin/ulasan')}}">Data Ulasan</a>
+                                    <a class="nav-link" href="{{url('admin/rating')}}">Data Rating</a>
                                     <a class="nav-link" href="index.php?url=kartu">Data</a>
                                     <a class="nav-link" href="index.php?url=about">Tentang</a>
                                     <a class="nav-link" href="index.php?url=contact">Kontak</a>
