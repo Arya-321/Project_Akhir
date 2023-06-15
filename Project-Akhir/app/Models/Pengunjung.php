@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\Ulasan;
+use App\Models\Rating;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

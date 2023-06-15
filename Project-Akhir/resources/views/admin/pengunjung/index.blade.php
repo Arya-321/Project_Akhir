@@ -7,19 +7,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{url('admin/pegawai/importexcel')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{url('admin/pengujung/importexcel')}}" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
-        <div class="form-group">
-            {{csrf_field()}}
-            <input type="file" name="file" >
-
-        </div>
-        
+       <div class="form-group">
+        {{csrf_field()}}
+        <input type="file" name="file" >
+       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -29,12 +27,7 @@
     </form>
   </div>
 </div>
-
-
-
-
-
-<!-- end modal -->
+<!-- end Modal -->
 <h1 class="mt-4">Tables</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="index.html">Dashboard Admin</a></li>
@@ -56,10 +49,10 @@
         <a href="{{url('admin/pengunjung/create')}}" class="btn btn-primary btn-sm">Tambah</a>
     </div>
     <div class="card-header">
-                            <a href="{{url('admin/pengunjung/pengunjungPDF')}}" class="btn btn-success btn-sm" target="_blank">Eksport PDF</a>
-                            <a href="{{url('admin/pengunjung/exportexcel')}}" class="btn btn-success btn-sm" > Export To EXCEL</a>
-                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal">
-                               Import To Excel
+                            <a href="{{url('admin/pengunjung/pengunjungPDF')}}" class="btn btn-danger btn-sm" target="_blank">Eksport PDF</a>
+                            <a href="{{url('admin/pengunjung/exportexcel')}}" class="btn btn-success btn-sm">Eksport To Excel</a>
+                            <button type="button" class="btn  btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal">
+                             Import To excel
                             </button>
                             </div>
     <div class="card-body">

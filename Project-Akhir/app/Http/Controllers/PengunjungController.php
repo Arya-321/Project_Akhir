@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Models\Pengunjung;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use PDF;
 use App\Exports\PengunjungExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PengunjungImport;
-
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -29,7 +29,7 @@ class PengunjungController extends Controller
      */
     public function create()
     {
-        //arahkan ke file create
+        //
         return view('admin.pengunjung.create');
     }
 
@@ -40,25 +40,24 @@ class PengunjungController extends Controller
     {
         $request->validate([
             'nama' => 'required|max:45',
-            'username' => 'required|max:45',
-            'jk' => 'required',
+            'username' => 'required',
             'password' => 'required',
             'nohp' => 'required|integer',
+            'jk' => 'required',
             'email' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'nullable|string|min:10',
             
         ],
         [
-            'nama' => 'Nama wajib diisi',
-            'username' => 'Username wajib diisi',
-            'jk.required' => 'jenis_kelamin wajib diisi',
-            'password' => 'Username wajib diisi',
-            'nohp' => 'Username wajib diisi',
-            'email' => 'Username wajib diisi',
-            'alamat' => 'Username wajib diisi',
-            
+            'nama.required' => 'Nama wajib diisi',
+            'nama.max' => 'Nama maksimal 45 karakter',
+            'username.required' => 'username wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'nohp' => 'No hpwajib diisi',
+            'jk.required' => 'Jenis Kelamin wajib diisi',
+            'alamat.required' => 'alamat wajib diisi',
         ]);
-        //fungsi untuk mengisi data pada form
+        //
         $hashedPassword = md5($request->password);
 
     DB::table('table_pengunjung')->insert([
@@ -78,7 +77,7 @@ class PengunjungController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show( $id)
     {
         //
         $pengunjung = DB::table('table_pengunjung')->where('id', $id)->get();
@@ -90,7 +89,7 @@ class PengunjungController extends Controller
      */
     public function edit( $id)
     {
-        //arahakn ke file edit yang ada didivisi view
+        //
         $pengunjung= DB::table('table_pengunjung')->where('id', $id)->get();
         return view('admin.pengunjung.edit', compact('pengunjung'));
     }
@@ -102,25 +101,15 @@ class PengunjungController extends Controller
     {
         $request->validate([
             'nama' => 'required|max:45',
-            'username' => 'required|max:45',
-            'jk' => 'required',
+            'username' => 'required',
             'password' => 'required',
             'nohp' => 'required|integer',
+            'jk' => 'required',
             'email' => 'required',
-            'alamat' => 'required',
-            
-        ],
-        [
-            'nama' => 'Nama wajib diisi',
-            'username' => 'Username wajib diisi',
-            'jk.required' => 'jenis_kelamin wajib diisi',
-            'password' => 'Username wajib diisi',
-            'nohp' => 'Username wajib diisi',
-            'email' => 'Username wajib diisi',
-            'alamat' => 'Username wajib diisi',
+            'alamat' => 'nullable|string|min:10',
             
         ]);
-        //buat proses edit form
+        //
         $hashedPassword = md5($request->password);
 
     DB::table('table_pengunjung')->where('id', $request->id)->update([
@@ -139,7 +128,7 @@ class PengunjungController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( string $id)
+    public function destroy( $id)
     {
         //
         DB::table('table_pengunjung')->where('id', $id)->delete();
@@ -176,15 +165,15 @@ class PengunjungController extends Controller
     }
 
     public function exportExcel(){
-        return Excel::download(new PengunjungExport, 'pengunjung.xlsx');
+        return Excel::download(new PengunjungExport, 'data_pengunjung.xlsx');
     }
 
-public function importExcel(Request $request)
-{
-    $file = $request->file('file');
-    $nama_file = rand() . $file->getClientOriginalName();
-    $file->move('file_excel', $nama_file);
-    Excel::import(new PengunjungImport(), public_path('/file_excel/' . $nama_file));
-    return redirect('admin/pengunjung');
-}
+    public function importExcel(Request $request){
+        $file = $request->file('file');
+        $nama_file = rand().$file->getClientOriginalName();
+        $file->move('file_excel', $nama_file);
+        Excel::import(new PengunjungImport, public_path('/file_excel/'.$nama_file));
+        return redirect('admin/pengunjung');
+        
+    }
 }

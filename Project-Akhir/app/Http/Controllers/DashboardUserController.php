@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Wisata;
+use App\Models\Ulasan;
+use App\Models\Rating;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -12,6 +15,9 @@ class DashboardUserController extends Controller
     public function index()
     {
         //
+        $wisata     = Wisata::count();
+        $ulasan     = Ulasan::count();
+        $rating     = Rating::count();
         $ar_wilayah = DB::table('table_pengunjung')
         ->selectRaw('jk, count(jk) as jumlah')
         ->groupBy('jk')
@@ -20,7 +26,7 @@ class DashboardUserController extends Controller
         ->selectRaw('nama, count(nama) as jumlah')
         ->groupBy('nama')
         ->get();
-         return view('user.dashboard', compact('ar_wilayah', 'ar_komentar'));
+         return view('user.dashboard', compact('wisata','ulasan','rating', 'ar_wilayah', 'ar_komentar'));
     }
 
     /**

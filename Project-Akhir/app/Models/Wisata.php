@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Models;
+<<<<<<< HEAD
 
+=======
+use App\Models\Ulasan;
+use App\Models\Rating;
+>>>>>>> denis
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Admin;
 use App\Models\Pengunjung;
-use Illuminate\Http\Request;
+use App\Models\Wisata;
+use App\Models\Ulasan;
+use App\Models\Rating;
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Http\Request;
+
 class DashboardController extends Controller
 {
     /**
@@ -12,8 +17,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //ini diarahkan ke view dashboard
+        //
+        $admin      = Admin::count();
         $pengunjung = Pengunjung::count();
+        $wisata     = Wisata::count();
+        $ulasan     = Ulasan::count();
+        $rating     = Rating::count();
         $ar_wilayah = DB::table('table_pengunjung')
         ->selectRaw('jk, count(jk) as jumlah')
         ->groupBy('jk')
@@ -22,7 +31,7 @@ class DashboardController extends Controller
         ->selectRaw('nama, count(nama) as jumlah')
         ->groupBy('nama')
         ->get();
-         return view('admin.dashboard', compact('pengunjung', 'ar_wilayah', 'ar_komentar'));
+         return view('admin.dashboard', compact('admin','pengunjung', 'wisata','ulasan','rating', 'ar_wilayah', 'ar_komentar'));
     }
 
     /**
