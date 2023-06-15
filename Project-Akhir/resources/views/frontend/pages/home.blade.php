@@ -25,16 +25,16 @@
         </div>
       </div>
     </div>
-
+</div>
     <div class="site-section">
 
       <div class="container">
         <div class="row justify-content-center text-center">
           <div class="col-md-7">
             <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Perjalanan</span>
-              <span class="subtitle-39191">Perjalanan</span>
-              <h3>Perjalanan Anda Dimulai Disini</h3>
+              <span class="backdrop text-center">Tempat Wisata Favorit</span>
+              <span class="subtitle-39191">Tempat Wisata Favorit</span>
+              <h3>Tempat Wisata Favorit ada  Disini</h3>
             </div>
           </div>
         </div>
@@ -54,9 +54,11 @@
   @endforeach
 </div>
 
-
+<div>
     
-
+</div>
+      </div>
+    </div>
     </div>
     <div class="site-section">
 
@@ -71,7 +73,7 @@
           </div>
         </div>
 
-
+      </div>
         <div class="row">
 
           <div class="col-lg-4 col-md-6 mb-4">
@@ -135,7 +137,7 @@
             <div class="heading-39101 mb-5">
               <span class="backdrop text-center">Testimonials</span>
               <span class="subtitle-39191">Testimony</span>
-              <h3>Happy Customers</h3>
+              <h3>Testimoni Pengunjung</h3>
             </div>
           </div>
         </div>
@@ -163,7 +165,7 @@
             <div class="heading-39101 mb-5">
               <span class="backdrop text-center">Blog</span>
               <span class="subtitle-39191">Updates</span>
-              <h3>Our Blog</h3>
+              <h3>Gambar</h3>
             </div>
           </div>
         </div>
@@ -181,6 +183,8 @@
       </div>
     </div>
   @endforeach
+</div>
+      </div>
 </div>
     @endsection
     <style>
