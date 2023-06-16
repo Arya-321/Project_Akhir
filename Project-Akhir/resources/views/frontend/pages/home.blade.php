@@ -40,19 +40,27 @@
         </div>
         <div class="row">
   @foreach($home as $w)
-    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-      <div class="listing-item">
-        <div class="listing-image">
-          <img src="{{url('admin/image')}}/{{$w->foto}}" alt="Image" class="img-fluid">
+    <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" data-aos="fade-up">
+      <div class="card bg-light"> <!-- Menambahkan kelas bg-light untuk latar belakang abu-abu -->
+        <img src="{{url('admin/image')}}/{{$w->foto}}" alt="Image" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{$w->nama}}</h5>
+          <p class="card-text text-justify">{{$w->deksripsi}}</p>
+          <p class="card-text"><strong>Alamat:</strong> {{$w->alamat}}</p>
+          <div class="d-flex align-items-center mt-auto">
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> <!-- Menggunakan ikon bintang -->
+            <!-- <a href="{{url('frontend/pages/home_detail/'.$w->id)}}" class="btn btn-primary ml-auto">Detail</a> -->
+          </div>
         </div>
-        <div class="listing-item-content">
-  <a href="{{url('frontend/pages/home_detail/'.$w->id)}}" class="px-3 mb-3 category bg-primary">{{$w->nama}}</a>
-</div>
-
       </div>
     </div>
   @endforeach
 </div>
+
+
+
+
+
 
 <div>
     
@@ -142,20 +150,29 @@
           </div>
         </div>
 
-        <div class="owl-carousel slide-one-item">
+        <div class="container">
   <div class="row">
-    @foreach($ulasan as $u)
+    @foreach($ulasan->take(4) as $key => $u)
       <div class="col-md-6">
         <div class="testimonial-39191">
-        <div style="text-align: center;">
-            <p>{{$w->nama}}</p>
-            <p>{{$u->komentar}}</p>
+          <div class="card testimonial-card">
+            <div class="card-body">
+              <h5 class="card-title">{{ $u->pengunjung }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ $u->wisata }}</h6>
+              <p class="card-text">{{ $u->komentar }}</p>
+            </div>
           </div>
-        </div>    
+        </div>
       </div>
+      @if(($key + 1) % 2 == 0)
+        </div><div class="row">
+      @endif
     @endforeach
   </div>
 </div>
+
+
+
 
     <div class="site-section">
 
@@ -170,19 +187,25 @@
           </div>
         </div>
 
-        <div class="row">
-  @foreach($home as $w)
-    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-      <div class="listing-item">
-        <div class="listing-image">
-          <img src="{{url('admin/image')}}/{{$w->foto}}" alt="Image" class="img-fluid">
-        </div>
-        <div class="listing-item-content">
-          <!-- <p class="px-3 mb-3 category bg-primary custom-text">{{$w->alamat}}</p> -->
+        <div class="container">
+
+  <div class="row">
+    @foreach($home as $w)
+      <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" data-aos="fade-up">
+        <div class="card bg-light">
+          <img src="{{url('admin/image')}}/{{$w->foto}}" alt="Image" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{$w->nama}}</h5>
+            <p class="card-text text-justify">{{$w->deskripsi}}</p>
+            <p class="card-text"><strong>Alamat:</strong> {{$w->alamat}}</p>
+            <div class="d-flex align-items-center mt-auto">
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  @endforeach
+    @endforeach
+  </div>
 </div>
       </div>
 </div>
@@ -210,3 +233,4 @@
   }
 
 </style>
+

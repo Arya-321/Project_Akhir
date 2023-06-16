@@ -15,7 +15,12 @@ class PagesController extends Controller
     {
         //
         $home = Wisata::limit(6)->get();
-        $ulasan = Ulasan::limit(2)->get();
+        $ulasan = Ulasan::join('table_pengunjung', 'table_ulasan.pengunjung_id', '=', 'table_pengunjung.id')
+        ->join('table_wisata', 'table_ulasan.wisata_id', '=', 'table_wisata.id')
+        ->select('table_ulasan.*', 'table_pengunjung.nama as pengunjung', 'table_wisata.nama as wisata')
+        ->take(4) // Mengambil hanya 4 dataset
+        ->get();
+
     return view("frontend.pages.home", compact('home', 'ulasan'));
 
     }
@@ -44,6 +49,17 @@ class PagesController extends Controller
         ->select('table_rating.*', 'table_pengunjung.nama as pengunjung', 'table_wisata.nama as wisata')
         ->get();
         return view ("frontend.pages.rating", compact('rating'));
+
+    }
+
+    public function Ulasan()
+    {
+        //
+        $ulasan = Ulasan::join('table_pengunjung', 'table_ulasan.pengunjung_id', '=', 'table_pengunjung.id')
+        ->join('table_wisata', 'table_ulasan.wisata_id', '=', 'table_wisata.id')
+        ->select('table_ulasan.*', 'table_pengunjung.nama as pengunjung', 'table_wisata.nama as wisata')
+        ->get();
+        return view( ' frontend.pages.ulasan', compact('ulasan'));
 
     }
 

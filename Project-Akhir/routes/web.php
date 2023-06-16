@@ -86,13 +86,14 @@ Route::get('/', function () {
         Route::get('about',[PagesController::class, 'about'])->name('about');
         Route::get('trips',[PagesController::class, 'trips'])->name('trips');
         Route::get('rating',[PagesController::class, 'rating'])->name('rating');
+        Route::get('ulasan',[PagesController::class, 'ulasan'])->name('ulasan');
         Route::get('home_detail/{id}',[PagesController::class,'home_detail'])->name('home_detail');
         Route::get('/pages/home/{id}', [IndexController::class, 'home']);
         
     
     });
     Auth::routes();
-    
+
     Route::get('/after_register', function(){
         return view ('after_register');
     });

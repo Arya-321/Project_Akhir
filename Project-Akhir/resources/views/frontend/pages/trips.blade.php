@@ -21,53 +21,18 @@
       </div>
     </div>
 <div class="site-section">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-7">
-            <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Journey</span>
-              <span class="subtitle-39191">Journey</span>
-              <h3>Your Journey Starts Here</h3>
+<div class="grid-container">
+        @foreach($trips as $w)
+        <div class="card">
+            <div class="card-image-container">
+                <img src="{{url('admin/image')}}/{{$w->foto}}" class="card-image">
             </div>
-          </div>
+            <div class="card-title">{{$w->nama}}</div>
+            <div class="card-description">{{$w->deksripsi}}</div>
+            <div class="card-address">{{$w->alamat}}</div>
+            
         </div>
-
-       <div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped" id="datatablesSimple">
-            <thead>
-                <tr>
-                    <th class="text-center">No</th>
-                    <th class="text-center">Nama</th>
-                    <th class="text-center">Deskripsi</th>
-                    <th class="text-center">Alamat</th>
-                    <th class="text-center">Foto</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                $no = 1;
-                @endphp
-                @foreach($trips as $w)
-                <tr>
-                    <td>{{$no}}</td>
-                    <td>{{$w->nama}}</td>
-                    <td>{{$w->deksripsi}}</td>
-                    <td>{{$w->alamat}}</td>
-                    <td>
-                        @empty($w->foto)
-                        <img src="{{url('admin/image/nofoto.png')}}" width="100" height="100">
-                        @else
-                        <img src="{{url('admin/image')}}/{{$w->foto}}" width="100" height="100">
-                        @endempty
-                    </td>
-                </tr>
-                @php
-                $no++;
-                @endphp
-                @endforeach
-            </tbody>
-        </table>
+        @endforeach
     </div>
 </div>
 
@@ -81,3 +46,58 @@
 
     
     @endsection
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f7f7f7;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .card-address {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .card-image-container {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-rating {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>

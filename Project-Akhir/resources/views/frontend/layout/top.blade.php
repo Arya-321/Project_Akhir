@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Trips &mdash; Website Template by Colorlib</title>
+    <title>GoVocation &mdash; Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -47,7 +47,7 @@
             <div class="col-3 ">
               <div class="site-logo">
                 <a href="{{url('frontend/home')}}" class="font-weight-bold">
-                  <img src="images/logo.png" alt="Image" class="img-fluid">
+                  <img src="{{asset('frontend/images/logoG.jpeg')}}" alt="Image" class="img-fluid">
                 </a>
               </div>
             </div>
@@ -66,7 +66,7 @@
                   <li><a href="{{url('frontend/trips')}}" class="nav-link">Wisata</a></li>
                   <li><a href="{{url('frontend/ulasan')}}" class="nav-link">Ulasan</a></li>
                   <li><a href="{{url('frontend/rating')}}" class="nav-link">Rating</a></li>
-                  <li><a href="{{url('frontend/login')}}" class="nav-link">Login</a></li>
+                  <li><a href="{{ route('login') }}" class="nav-link">Login</a></li>
                 </ul>
               </nav>
             </div>

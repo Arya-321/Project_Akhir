@@ -15,7 +15,7 @@
                 <td>Pengunjung</td>
                 <td>Wisata</td>
                 <td>Ulasan</td>
-                <!-- <td>Tanggal</td> -->
+                
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                 <td>{{$data->pengunjung}}</td>
                 <td>{{$data->wisata}}</td>
                 <td>{{$data->komentar}}</td>
-                <!-- <td>{{$data->tanggal}}</td> -->
+                
             </tr>
             @endforeach
         </tbody>
