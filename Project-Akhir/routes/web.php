@@ -12,6 +12,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Models\Ulasan;
+use App\Http\Controllers\FeedbackdestinasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,9 @@ use App\Models\Ulasan;
 */
 
 Route::get('/', function () {
-    Alert::success('Selamat Datang');
-    return view('welcome');
+    return view('front');
 });
+Route::get('/feedbackdestinasi', [FeedbackdestinasiController::class, 'index'])->middleware('auth');
 // Route::prefix('admin')->group(function(){
     Route::group(['middleware' => ['auth', 'peran:admin']], function() {
         Route::prefix('admin')->name('admin.')->group(function(){
